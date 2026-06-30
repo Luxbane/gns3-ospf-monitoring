@@ -60,7 +60,7 @@ The project also includes failure testing to verify that routing reconverges cor
 
 ### Link Monitoring
 
-![Link](grafana/screenshots/dashboard-link-monitor.png)
+![Link](grafana/screenshots/dashboard-link-monitoring.png)
 
 ---
 
