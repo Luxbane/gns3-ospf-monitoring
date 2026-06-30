@@ -107,27 +107,87 @@ gns3-ospf-monitoring/
 
 ---
 
-## Running the Project
+## Requirements
 
-Clone the repository
+- GNS3
+- Cisco IOU/IOL Router & L2 Switch images
+- Docker Engine
+- Docker Compose
+- Git (optional)
+
+---
+
+## Installation
+
+Clone repository
 
 ```bash
-git clone https://github.com/Luxbane/gns3-ospf-monitoring.git
+git clone git@github.com:Luxbane/gns3-ospf-monitoring.git
 cd gns3-ospf-monitoring
 ```
 
-Start Docker services
+Start monitoring stack
 
 ```bash
 docker compose up -d
 ```
 
-Open
+Verify containers
 
-- Grafana: http://localhost:3000
-- Prometheus: http://localhost:9090
+```bash
+docker ps
+```
+
+Open services
+
+Grafana
+http://localhost:3000
+
+Prometheus
+http://localhost:9090
+
+SNMP Exporter
+http://localhost:9116
 
 ---
+
+## Import Dashboard
+
+1. Login Grafana
+2. Add Prometheus datasource
+3. Import dashboard from
+
+```
+grafana/dashboards/GNS3 OSPF Monitor.json
+```
+
+---
+
+## Configure Prometheus
+
+Edit
+
+```
+prometheus.yml
+```
+
+Replace the router IP addresses with your own GNS3 topology.
+
+Restart Prometheus
+
+```bash
+docker compose restart prometheus
+```
+
+---
+
+## Testing
+
+- Ping between VLANs
+- Shut down Core1 e0/0
+- Observe interface status changes in Grafana
+- Verify OSPF reroutes traffic
+- Bring interface back up---
 
 ## Future Improvements
 
