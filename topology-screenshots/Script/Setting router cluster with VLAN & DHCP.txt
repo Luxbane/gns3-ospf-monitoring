@@ -1,0 +1,43 @@
+configure terminal
+interface e0/0
+ip address 10.10.14.2 255.255.255.252
+no shutdown
+interface e0/1
+ip address 10.10.24.2 255.255.255.252
+no shutdown
+interface e0/2
+no shutdown
+interface e0/2.10
+encapsulation dot1Q 10
+ip address 192.168.10.1 255.255.255.0
+interface e0/2.20
+encapsulation dot1Q 20
+ip address 192.168.20.1 255.255.255.0
+interface e0/2.30
+encapsulation dot1Q 30
+ip address 192.168.30.1 255.255.255.0
+exit
+ip dhcp excluded-address 192.168.10.1
+ip dhcp excluded-address 192.168.20.1
+ip dhcp excluded-address 192.168.30.1
+ip dhcp pool HOME1
+network 192.168.10.0 255.255.255.0
+default-router 192.168.10.1
+dns-server 8.8.8.8
+ip dhcp pool HOME2
+network 192.168.20.0 255.255.255.0
+default-router 192.168.20.1
+dns-server 8.8.8.8
+ip dhcp pool HOME3
+network 192.168.30.0 255.255.255.0
+default-router 192.168.30.1
+dns-server 8.8.8.8
+router ospf 1
+router-id 3.3.3.3
+network 10.10.14.0 0.0.0.3 area 0
+network 10.10.24.0 0.0.0.3 area 0
+network 192.168.10.0 0.0.0.255 area 0
+network 192.168.20.0 0.0.0.255 area 0
+network 192.168.30.0 0.0.0.255 area 0
+end
+write

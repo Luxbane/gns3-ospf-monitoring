@@ -1,0 +1,22 @@
+configure terminal
+vlan 40
+name HOME-4
+vlan 50
+name HOME-5
+vlan 60
+name HOME-6
+exit
+interface e0/1
+switchport mode access
+switchport access vlan 40
+interface e0/2
+switchport mode access
+switchport access vlan 50
+interface e0/3
+switchport mode access
+switchport access vlan 60
+interface e0/0
+switchport trunk encapsulation dot1q
+switchport mode trunk
+end
+write
