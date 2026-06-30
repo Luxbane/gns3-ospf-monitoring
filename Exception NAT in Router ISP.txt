@@ -1,0 +1,9 @@
+configure terminal
+no ip nat inside source list 1 interface e0/0 overload
+ip access-list extended NAT_EXEMPT
+deny ip any host 192.168.122.1
+permit ip any any
+exit
+ip nat inside source list NAT_EXEMPT interface e0/0 overload
+end
+write
