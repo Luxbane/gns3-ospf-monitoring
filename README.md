@@ -110,7 +110,7 @@ gns3-ospf-monitoring/
 ## Requirements
 
 - GNS3
-- Cisco IOU/IOL Router & L2 Switch images
+- Cisco Router & L2 Switch images (Please use your own legally obtained router and switch images compatible with GNS3.)
 - Docker Engine
 - Docker Compose
 - Git (optional)
